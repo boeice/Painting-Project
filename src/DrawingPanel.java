@@ -6,7 +6,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JPanel;
 
 import Shapes.Shape;
@@ -19,7 +18,7 @@ public class DrawingPanel extends JPanel
 		implements MouseMotionListener, MouseListener{
 	
 	private Color color = Color.black;
-	private List<Shape> shapes = new ArrayList<>();
+	private ArrayList<Shape> shapes = new ArrayList<>();
 	private Shape currentShape;
 	private ShapeType currentShapeType = ShapeType.FREEHAND;
 	private boolean filled = false;
