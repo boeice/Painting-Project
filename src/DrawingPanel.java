@@ -19,9 +19,9 @@ public class DrawingPanel extends JPanel
 		implements MouseMotionListener, MouseListener{
 	
 	private Color color = Color.black;
-	private List<Shape> shapes = new ArrayList<>(); ///
+	private List<Shape> shapes = new ArrayList<>();
 	private Shape currentShape;
-	private ShapeType currentShapeType = ShapeType.FREEHAND; ///
+	private ShapeType currentShapeType = ShapeType.FREEHAND;
 	private boolean filled = false;
 	private float strokeSize = 5f;
 	
@@ -43,7 +43,7 @@ public class DrawingPanel extends JPanel
 	}
 	
 	@Override
-	protected void paintComponent(Graphics g) { ///
+	protected void paintComponent(Graphics g) { 
 		super.paintComponent(g);
 		for (Shape s : shapes) {
 	        s.draw(g);
@@ -54,7 +54,7 @@ public class DrawingPanel extends JPanel
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) { ///
+	public void mousePressed(MouseEvent e) { 
 		Point p = e.getPoint();
 		switch (currentShapeType) {
 
@@ -86,7 +86,6 @@ public class DrawingPanel extends JPanel
 	public void mouseReleased(MouseEvent e) {
 		shapes.add(currentShape);
 		currentShape = null; 
-	    repaint();
 	}
 	
 	@Override public void mouseEntered(MouseEvent e) {}
