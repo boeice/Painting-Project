@@ -6,6 +6,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import java.util.ArrayList;
+import java.util.Stack;
+
 import javax.swing.JPanel;
 
 import Shapes.Shape;
@@ -23,6 +25,7 @@ public class DrawingPanel extends JPanel
 	private ShapeType currentShapeType = ShapeType.FREEHAND;
 	private boolean filled = false;
 	private float strokeSize = 5f;
+	private Stack<Shape> redoStack = new Stack<>(); ///
 	
 	public DrawingPanel() {
         setBackground(Color.white);
@@ -87,16 +90,24 @@ public class DrawingPanel extends JPanel
 		currentShape = null; 
 	}
 	
-	public void clear() {
+	public void clear() { ///
 		if (!shapes.isEmpty()) {
 		shapes.clear();
 		repaint(); 
 		}
 	}
 	
-	public void undo() {
+	public void undo() { ///
 		if (!shapes.isEmpty()) {
-	        shapes.remove(shapes.size() - 1);
+	        Shape s = shapes.remove(shapes.size() - 1);
+			redoStack.push(s);
+	        repaint();
+	    }
+	}
+	public void redo() { ///
+		if (!redoStack.isEmpty()) {
+			Shape s = redoStack.pop();
+			shapes.add(s);
 	        repaint();
 	    }
 	}
