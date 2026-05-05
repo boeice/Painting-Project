@@ -13,9 +13,12 @@ public class ToolBar extends JPanel implements ActionListener, ChangeListener {
 	private JButton freeBtn = new JButton("Free");
 	private JButton rectBtn = new JButton("Rect");
 	private JButton ovalBtn = new JButton("Oval");
-	private JButton clearBtn = new JButton("Clear");
-	private JButton undoBtn = new JButton("Undo");
 	
+	private JButton clearBtn = new JButton("Clear");
+	
+	private JButton undoBtn = new JButton("Undo");
+	private JButton redoBtn = new JButton("Redo");
+
 	private JRadioButton fillBtn = new JRadioButton("Fill");
 	private JRadioButton drawBtn = new JRadioButton("Draw");
 	
@@ -40,6 +43,7 @@ public class ToolBar extends JPanel implements ActionListener, ChangeListener {
         
         clearBtn.addActionListener(this);
         undoBtn.addActionListener(this);
+        redoBtn.addActionListener(this);
 
         add(strokeLabel);
         add(strokeSize);
@@ -51,6 +55,7 @@ public class ToolBar extends JPanel implements ActionListener, ChangeListener {
         add(rectBtn); 
         
         add(undoBtn);
+        add(redoBtn);
         add(clearBtn);
         
         add(fillBtn);
@@ -72,6 +77,8 @@ public class ToolBar extends JPanel implements ActionListener, ChangeListener {
 	    else if (e.getSource() == ovalBtn)  panel.setShapeType(ShapeType.OVAL);
 		
 	    else if (e.getSource() == undoBtn)  panel.undo();
+	    else if (e.getSource() == redoBtn) panel.redo();
+			
 	    else if (e.getSource() == clearBtn) panel.clear();
 		
 	    else if (e.getSource() == fillBtn)  panel.setFilled(true);
