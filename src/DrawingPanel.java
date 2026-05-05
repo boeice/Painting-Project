@@ -87,8 +87,23 @@ public class DrawingPanel extends JPanel
 		currentShape = null; 
 	}
 	
+	public void clear() {
+		if (!shapes.isEmpty()) {
+		shapes.clear();
+		repaint(); 
+		}
+	}
+	
+	public void undo() {
+		if (!shapes.isEmpty()) {
+	        shapes.remove(shapes.size() - 1);
+	        repaint();
+	    }
+	}
+	
 	@Override public void mouseEntered(MouseEvent e) {}
     @Override public void mouseExited(MouseEvent e) {}
     @Override public void mouseClicked(MouseEvent e) {}
     @Override public void mouseMoved(MouseEvent e) {}
+
 }
