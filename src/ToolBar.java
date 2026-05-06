@@ -9,7 +9,8 @@ public class ToolBar extends JPanel implements ActionListener, ChangeListener {
 	private Color color = Color.black;
 	private DrawingPanel panel;
 	
-	private JButton colorBtn = new JButton("Color Pallet");
+	private JButton colorBtn = new JButton("Color Palette");
+	
 	private JButton freeBtn = new JButton("Free");
 	private JButton rectBtn = new JButton("Rect");
 	private JButton ovalBtn = new JButton("Oval");
