@@ -63,6 +63,9 @@ public class ToolBar extends JPanel implements ActionListener, ChangeListener {
         
         modeGroup.add(drawBtn);
         modeGroup.add(fillBtn);
+        
+        fillBtn.setVisible(false);
+        drawBtn.setVisible(false);
     }
 
 	@Override
@@ -72,13 +75,27 @@ public class ToolBar extends JPanel implements ActionListener, ChangeListener {
 	    	panel.setColor(color);
 	    	}
 		
-	    else if (e.getSource() == freeBtn)  panel.setShapeType(ShapeType.FREEHAND);
-	    else if (e.getSource() == rectBtn)  panel.setShapeType(ShapeType.RECTANGLE);
-	    else if (e.getSource() == ovalBtn)  panel.setShapeType(ShapeType.OVAL);
+	    else if (e.getSource() == freeBtn)  { ////
+	        	panel.setShapeType(ShapeType.FREEHAND);
+	    	    fillBtn.setVisible(false);
+	        drawBtn.setVisible(false);
+	    }
+		
+	    else if (e.getSource() == rectBtn) { ////
+	        panel.setShapeType(ShapeType.RECTANGLE);
+	        fillBtn.setVisible(true);
+	        drawBtn.setVisible(true);
+	    }
+
+	    else if (e.getSource() == ovalBtn) { ////
+	        panel.setShapeType(ShapeType.OVAL);
+	        fillBtn.setVisible(true);
+	        drawBtn.setVisible(true);
+	    }
 		
 	    else if (e.getSource() == undoBtn)  panel.undo();
 	    else if (e.getSource() == redoBtn) panel.redo();
-			
+		
 	    else if (e.getSource() == clearBtn) panel.clear();
 		
 	    else if (e.getSource() == fillBtn)  panel.setFilled(true);
